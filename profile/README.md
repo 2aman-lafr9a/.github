@@ -20,7 +20,7 @@ Team managers can make payments with confidence, benefiting from the decentraliz
 A state-of-the-art ML recommendation system assists team managers in selecting the most optimal insurance contracts.
 By analyzing historical data, team composition, and specific requirements, the system provides personalized recommendations to enhance decision-making.
 ### Getting Started
-For detailed information about 2aman Lfar9a's features, setup, and usage instructions, please refer to the [full documentation](https://www.notion.so/sohaibmanah/SCRUM-5dad4303e81c4568a750c931f4cc3ff4).
+For detailed information about 2aman Lfar9a's features, setup, and usage instructions, please refer to the [full documentation](https://2aman-lafar9a.notion.site/SCRUM-5dad4303e81c4568a750c931f4cc3ff4?pvs=74).
 
 Feedback and Support
 We welcome your feedback and suggestions to improve 2aman Lfar9a.
