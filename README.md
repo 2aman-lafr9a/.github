@@ -160,6 +160,25 @@ terms such as "platform", "engine", or "algorithm"), is a subclass of informatio
     7. The Ethereum Virtual Machine ensures consistent execution of smart contracts across all nodes in the Ethereum network.
     8. The Ethereum blockchain maintains the state of smart contracts and transactions, providing a tamper-proof, decentralized record of all interactions.
 
+**Deployment :**
+
+The deployment has been successfully executed in Azure using a comprehensive stack that includes Docker, Docker Compose, Kubernetes (k8s), Jenkins, Azure Container Registry, Azure Storage, Azure DNS, and Azure Load Balancer. Let's break down the role of each technology in this deployment:
+
+1. **Docker:** Docker is used for containerization, allowing the application and its dependencies to be packaged into a single container. Containers ensure consistency across different environments and simplify deployment.
+2. **Docker Compose:** Docker Compose is used to define and manage multi-container Docker applications. It allows you to specify the services, networks, and volumes required for the application in a **`docker-compose.yml`** file.
+3. **Kubernetes (k8s):** Kubernetes is a container orchestration platform that automates the deployment, scaling, and management of containerized applications. It provides features such as load balancing, auto-scaling, and self-healing.
+4. **Jenkins:** Jenkins is a popular open-source automation server used for building, testing, and deploying code. In this context, Jenkins likely automates the CI/CD (Continuous Integration/Continuous Deployment) pipeline, triggering builds and deployments based on changes to the codebase.
+5. **Azure Container Registry:** Azure Container Registry is a private container registry in Azure where Docker container images are stored. It provides a secure and scalable way to manage and deploy container images.
+6. **Azure Storage:** Azure Storage is used for storing various types of data, such as artifacts, logs, and configuration files. It can be utilized for persistent storage needs within the deployment.
+7. **Azure DNS Registry:** Azure DNS is a domain name system (DNS) service provided by Azure. Azure DNS Registry is likely a typo, and it might refer to Azure DNS for managing domain names and mapping them to the deployed services.
+8. **Azure Load Balancer:** Azure Load Balancer distributes incoming network traffic across multiple servers to ensure no single server is overwhelmed. It enhances the availability and reliability of applications by balancing the load across multiple instances of the deployed application.
+9. **Azure Monitor:**
+- **Overview:** Azure Monitor is a comprehensive solution for collecting, analyzing, and acting on telemetry data from Azure resources.
+- **Metrics:** Azure Monitor provides metrics for Azure resources, enabling users to visualize and analyze the performance of their applications and infrastructure.
+- **Logs:** Azure Monitor collects and analyzes log data from resources, offering powerful querying and analysis capabilities with Azure Monitor Logs (formerly known as Log Analytics).
+
+In summary, this deployment stack combines containerization, orchestration, automation, and cloud services to create a robust and scalable infrastructure on Azure. Docker and Docker Compose help with packaging and managing containers, Kubernetes orchestrates these containers, Jenkins automates the deployment pipeline, and Azure services provide a cloud-native environment for hosting and managing the application.
+
 # Client Side: ****
 
 ## Technologies used
@@ -326,33 +345,7 @@ Developers: [https://developers.google.com/web/updates/2019/02/rendering-on-the
 
 Hierarchy of the Project : 
 
-├── Ta2minUi
-│   ├── app
-│   │   ├── auth             # Files related to user authentication
-│   │   ├── offers           # Files for handling offers within the application
-│   │   ├── players          # Files related to player-related functionalities
-│   │   ├── team             # Files for managing team-related features
-│   │   ├── agency           # Files specific to agency-related functionalities
-│   │   ├── teamManager       # Files for managing team managers
-│   │   ├── page.tsx         # Main page component
-│   │   ├── provider.tsx     # Provider logic for application state management
-│   │   └── layout.tsx       # Layout components for structuring the UI
-│   ├── components
-│   │   ├── charts           # Components related to data visualization using charts
-│   │   ├── darkmoodSwitcher # Components for toggling between dark and light modes
-│   │   ├── home             # Components related to the home page
-│   │   ├── hooks            # Custom React hooks used across the application
-│   │   ├── icons            # Icon components used for various purposes
-│   │   ├── layout           # Layout components for structuring the UI
-│   │   ├── navbar           # Components related to navigation bars
-│   │   ├── offers           # Components related to displaying and managing offers
-│   │   ├── players          # Components related to displaying and managing player information
-│   │   ├── sidebar          # Components for the sidebar navigation
-│   │   ├── table            # Components related to tabular data
-│   │   └── teams            # Components related to managing teams
-│   ├── graphql              # GraphQL-related files and queries
-│   ├── styles               # Stylesheets and styling-related assets
-│   └── ... (other folders from the Next.js project)
+![Untitled](2aman%20lafr9a%20-%20la3ab%20o%20nta%20marata7%20ee18d6eea95c4dfe8ba216bfbc551b31/Untitled%205.png)
 
 Ta2minUi stands as a comprehensive Next.js project, orchestrating the frontend logic of a sophisticated application. The organized hierarchy within the main 'Ta2minUi' folder is designed to provide clarity and efficiency in development:
 
@@ -398,17 +391,17 @@ This meticulously structured hierarchy not only ensures a clear organization of 
 
 **DARK MODE** 
 
-![Untitled](2aman%20lafr9a%20-%20la3ab%20o%20nta%20marata7%20ee18d6eea95c4dfe8ba216bfbc551b31/Untitled%205.png)
+![Untitled](2aman%20lafr9a%20-%20la3ab%20o%20nta%20marata7%20ee18d6eea95c4dfe8ba216bfbc551b31/Untitled%206.png)
 
 **LIGHT MODE**
 
-![Untitled](2aman%20lafr9a%20-%20la3ab%20o%20nta%20marata7%20ee18d6eea95c4dfe8ba216bfbc551b31/Untitled%206.png)
+![Untitled](2aman%20lafr9a%20-%20la3ab%20o%20nta%20marata7%20ee18d6eea95c4dfe8ba216bfbc551b31/Untitled%207.png)
 
 The switcher :
 
-![Untitled](2aman%20lafr9a%20-%20la3ab%20o%20nta%20marata7%20ee18d6eea95c4dfe8ba216bfbc551b31/Untitled%207.png)
-
 ![Untitled](2aman%20lafr9a%20-%20la3ab%20o%20nta%20marata7%20ee18d6eea95c4dfe8ba216bfbc551b31/Untitled%208.png)
+
+![Untitled](2aman%20lafr9a%20-%20la3ab%20o%20nta%20marata7%20ee18d6eea95c4dfe8ba216bfbc551b31/Untitled%209.png)
 
 # **Contributors:**
 
