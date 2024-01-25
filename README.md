@@ -1,0 +1,453 @@
+# 2aman lafr9a -  la3ab o nta marata7
+
+![football-insurance.webp](2aman%20lafr9a%20-%20la3ab%20o%20nta%20marata7%20ee18d6eea95c4dfe8ba216bfbc551b31/football-insurance.webp)
+
+**Problem :**
+
+In the realm of football, numerous players face injuries in every match, instilling a sense of fear as the sport represents their livelihood. Life unfolds with its inherent uncertainties, and players inevitably grapple with injuries and challenges. On the flip side, numerous insurance agencies strive to provide coverage for these athletes. However, reaching a consensus often proves elusive, as teams seek tailored solutions that may not align with offerings from other agencies.
+
+**Solution:**
+
+An application, powered by machine learning, revolutionizes the sports industry by providing team managers with intelligent recommendations for offers. The incorporation of blockchain technology ensures the security and transparency of contract storage while embracing a 100% digital experience, including cryptocurrency payments, Additionally, the application is built on a micro-services architecture, offering scalability, flexibility, and efficiency by breaking down functionalities into modular and independent services. This innovative approach not only streamlines the negotiation process but also enhances efficiency and security in the management of player contracts.
+
+**Our application’s architecture:**
+
+As stated before we chose to use a micro-services architecture using an API gateway written in Spring Boot as the medium for communication, in addition to allowing our micro-services to communicate we decided to utilize the GRPC framework due to its fast response times and broad language support.
+
+![Untitled](2aman%20lafr9a%20-%20la3ab%20o%20nta%20marata7%20ee18d6eea95c4dfe8ba216bfbc551b31/Untitled.png)
+
+As you can see above Client can only communicate with the API gateway, which in turn will check the credentials of the client with the authentication micro-service, and only then will the gateway allow it to access the other components of the application.
+
+Let us explore our back-end schema:
+
+1. **API Gateway**
+
+This micro-service is a Java-based API Gateway application that uses Spring Boot and Maven. It serves as an intermediary for various services, including authentication, agency, offer, team, user, player, rating, and team manager services. These services are defined and accessed via gRPC clients.
+
+The project uses GraphQL for defining the types and queries for the various entities in the system. These include Agency, Offer, Team, Player, Rating, and Team Manager. Each entity has its own GraphQL schema file, and the queries are defined in the query. graphics.
+
+1. **Auth service:**
+    
+    ![Gateway.jpg](2aman%20lafr9a%20-%20la3ab%20o%20nta%20marata7%20ee18d6eea95c4dfe8ba216bfbc551b31/Gateway.jpg)
+    
+
+This microserver is responsible for JWT authentication, and role-based authorization, it is written with a low level language and a fast language **RUST** (Rust is a multi-paradigm, general-purpose programming language that emphasizes performance, type safety, and concurrency. It enforces memory safety, meaning that all references point to valid memory, without requiring the use of automated memory management techniques, such as garbage collector) 
+
+[https://en.wikipedia.org/wiki/Rust_(programming_language)](https://en.wikipedia.org/wiki/Rust_(programming_language))
+
+It uses a MySql database ( Relational database ) as  a primary database to store its data, and redis to cache the user data so the access to db will be fast, and it provides a GRPC interface to deal with it, it’s dumps and all that it knows is AUTH only, the methods it provides are 
+
+```protobuf
+rpc SignUp(SignUpRequest) returns (SignUpResponse);
+rpc SignIn(SignInRequest) returns (SignInResponse);
+rpc validateToken(TokenValidationRequest) returns (TokenValidationResponse);
+```
+
+what makes this microservice essential and special, it’s stateless, reusable, and central, but it’s too crucial because it’s a point of failure, and it’s used by the API gateway to validate authorizations and make sure that all routes are protected, and it hides the details of auth from any other microservers so devs can focus only on the business logic of their microservices.
+
+1. **Agencies and Offer Management:**
+
+These 2 services were written in GOLANG and used a PostgreSQL database, the Agencies micro-service is responsible for managing agencies. It provides functionalities such as creating, updating, retrieving, and deleting agencies.
+
+The Offers micro-service is responsible for managing offers. It provides functionalities such as creating, updating, retrieving, and deleting offers.
+
+[https://en.wikipedia.org/wiki/Go_(programming_language)](https://en.wikipedia.org/wiki/Go_(programming_language))
+
+It uses a PostgreSQL database ( Relational database ) as  a primary database to store its data, and it provides a GRPC interface to deal with it, it’s dumps and all that it knows is Agency/ offers only, the methods it provides are 
+
+```protobuf
+	# Agency
+	rpc GetAgencies(GetAgenciesRequest) returns (GetAgenciesResponse);
+  rpc GetAgency(GetAgencyRequest) returns (GetAgencyResponse);
+  rpc CreateAgency(CreateAgencyRequest) returns (CreateAgencyResponse);
+  rpc UpdateAgency(UpdateAgencyRequest) returns (UpdateAgencyResponse);
+  rpc DeleteAgency(DeleteAgencyRequest) returns (DeleteAgencyResponse);
+
+	# Offers
+	rpc GetOffers(GetOffersRequest) returns (GetOffersResponse);
+  rpc GetOffer(GetOfferRequest) returns (GetOfferResponse);
+  rpc CreateOffer(CreateOfferRequest) returns (CreateOfferResponse);
+  rpc UpdateOffer(UpdateOfferRequest) returns (UpdateOfferResponse);
+  rpc DeleteOffer(DeleteOfferRequest) returns (DeleteOfferResponse);
+```
+
+1. **Teams and player management:**
+
+These 2 services were written in RUBY and used a mysql database, the Teams micro-service is responsible for managing Teams. It provides functionalities such as creating, updating, retrieving, and deleting Teams.
+
+The player micro-service is responsible for managing player. It provides functionalities such as creating, updating, retrieving, and deleting player.
+
+[https://en.wikipedia.org/wiki/Ruby_(programming_language)](https://en.wikipedia.org/wiki/Ruby_(programming_language))
+
+It uses a Mysql database ( Relational database ) as  a primary database to store its data, and it provides a GRPC interface to deal with it, it’s dumps and all that it knows is teams/ players only, the methods it provides are 
+
+```protobuf
+# Team manager
+		rpc GetTeamManager (GetTeamManagerRequest) returns (GetTeamManagerResponse) {}
+    rpc GetTeamManagers (GetTeamManagersRequest) returns (GetTeamManagersResponse) {}
+    rpc CreateTeamManager (CreateTeamManagerRequest) returns (CreateTeamManagerResponse) {}
+    rpc UpdateTeamManager (UpdateTeamManagerRequest) returns (UpdateTeamManagerResponse) {}
+    rpc DeleteTeamManager (DeleteTeamManagerRequest) returns (DeleteTeamManagerResponse) {}
+# Players
+		rpc GetPlayer(GetPlayerRequest) returns (GetPlayerResponse) {}
+    rpc CreatePlayer(CreatePlayerRequest) returns (CreatePlayerResponse) {}
+    rpc UpdatePlayer(UpdatePlayerRequest) returns (UpdatePlayerResponse) {}
+    rpc DeletePlayer(DeletePlayerRequest) returns (DeletePlayerResponse) {}
+    rpc GetPlayers(GetPlayersRequest) returns (GetPlayersResponse) {}
+# Teams
+    rpc CreateTeam(CreateTeamRequest) returns (CreateTeamResponse) {}
+    rpc GetTeam(GetTeamRequest) returns (GetTeamResponse) {}
+    rpc UpdateTeam(UpdateTeamRequest) returns (UpdateTeamResponse) {}
+    rpc DeleteTeam(DeleteTeamRequest) returns (DeleteTeamResponse) {}
+    rpc GetTeams(GetTeamsRequest) returns (GetTeamsResponse) {}
+```
+
+**The architecture of the recommendation system:**
+
+A recommender system, or a recommendation system (sometimes replacing "system" with 
+terms such as "platform", "engine", or "algorithm"), is a subclass of information filtering systems that provide suggestions for items that are most pertinent to a particular user.
+
+![Untitled](2aman%20lafr9a%20-%20la3ab%20o%20nta%20marata7%20ee18d6eea95c4dfe8ba216bfbc551b31/Untitled%201.png)
+
+- **Example**:
+
+![Untitled](2aman%20lafr9a%20-%20la3ab%20o%20nta%20marata7%20ee18d6eea95c4dfe8ba216bfbc551b31/Untitled%202.png)
+
+1. **Collaborative Filtering:**
+    - **Description:** Collaborative filtering techniques recommend items based on the preferences and behaviors of users with similar tastes. It relies on user-item interaction data to find patterns and similarities among users.
+    - **Types:**
+        - **User-Based Collaborative Filtering:** Recommends items based on the preferences of users with similar behavior.
+        - **Item-Based Collaborative Filtering:** Recommends items similar to those a user has already liked or interacted with.
+    - **Example:** If User A and User B have similar preferences and both liked Item X, collaborative filtering might recommend Item Y to User A if User B has liked Item Y.
+2. **Content-Based Filtering:**
+    - **Description:** Content-based filtering recommends items to users based on the features or attributes of the items and the preferences expressed by the user. It focuses on the characteristics of the items rather than user behavior.
+    - **Process:**
+        - **Profile Creation:** Build a user profile based on their preferences and historical interactions.
+        - **Item Representation:** Represent items using features or attributes.
+        - **Recommendation:** Recommend items similar to those in the user's profile.
+    - **Example:** If a user has shown a preference for action movies, content-based filtering might recommend other action movies with similar themes or genres.
+3. **Hybrid Recommendation Systems:**
+    - **Description:** Hybrid recommendation systems combine multiple recommendation techniques to leverage their strengths and overcome individual limitations. They aim to provide more accurate and diverse recommendations by merging collaborative filtering, content-based filtering, or other approaches.
+    - **Types:**
+        - **Weighted Hybrid:** Assign weights to different recommendation sources based on their performance.
+        - **Feature Combination:** Combine features from different recommendation techniques to create a unified model.
+        - **Switching Hybrid:** Use one recommendation technique in certain situations and another in different scenarios.
+    - **Example:** Combining collaborative filtering and content-based filtering might enhance recommendation accuracy by capturing both user preferences and item characteristics.
+    
+    The a**rchitecture of the blockchain:**
+    
+    ![1_3VnQFDfautjlj690oaf5hg.webp](2aman%20lafr9a%20-%20la3ab%20o%20nta%20marata7%20ee18d6eea95c4dfe8ba216bfbc551b31/1_3VnQFDfautjlj690oaf5hg.webp)
+    
+    This architecture illustrates the interaction between various components involved in a decentralized application (DApp) built on the Ethereum blockchain, specifically a DApp that utilizes smart contracts. The components are as follows:
+    
+    1. **Internet**: The global network that enables data communication between devices.
+    2. **Web Server**: A server that hosts the web application, serving static files like HTML, CSS, and JavaScript to users' browsers.
+    3. **Browser**: A software application used to access and display web content, such as a DApp's user interface.
+    4. **Block**: A fundamental unit of data storage in blockchain technology, containing a collection of transactions.
+    5. **Front-end**: The user interface of a DApp, built using technologies like JavaScript, HTML, and CSS.
+    6. **Smart Contracts**: Self-executing digital agreements deployed on the Ethereum blockchain, governing the logic and functionality of a DApp.
+    7. **Ethereum Virtual Machine (EVM)**: A virtual machine that executes smart contracts on the Ethereum blockchain, ensuring consistent and predictable behavior across all nodes.
+    8. **Ethereum Blockchain**: The decentralized, distributed ledger that stores and maintains the state of smart contracts and transactions on the Ethereum network.
+    
+    The architecture can be described as follows:
+    
+    1. The Internet enables communication between the web server and the user's browser.
+    2. The web server hosts the front-end components (HTML, CSS, JavaScript) of the DApp, serving them to the user's browser upon request.
+    3. The user's browser receives and displays the front-end components, allowing the user to interact with the DApp.
+    4. When the user interacts with the DApp, the browser sends transactions to the Ethereum blockchain.
+    5. The transactions are grouped into blocks and added to the Ethereum blockchain by the network's nodes.
+    6. The smart contracts, deployed on the Ethereum blockchain, execute the logic and functionality of the DApp.
+    7. The Ethereum Virtual Machine ensures consistent execution of smart contracts across all nodes in the Ethereum network.
+    8. The Ethereum blockchain maintains the state of smart contracts and transactions, providing a tamper-proof, decentralized record of all interactions.
+
+# Client Side: ****
+
+## Technologies used
+
+- **React**
+    
+    ![Untitled](2aman%20lafr9a%20-%20la3ab%20o%20nta%20marata7%20ee18d6eea95c4dfe8ba216bfbc551b31/Untitled%203.png)
+    
+     
+    
+    # **React Overview**
+    
+    ## **What is React?**
+    
+    React is an open-source JavaScript library developed by Facebook for building user interfaces or UI components. It is known for its simplicity, flexibility, and efficiency. If you're new to React or need a refresher, this section will provide you with a brief overview of React and its key concepts.
+    
+    ## **Key Concepts**
+    
+    ### **1. Components**
+    
+    In React, the UI is broken down into components, which are modular, reusable building blocks. Components encapsulate both the UI and the logic associated with it, making it easier to manage and maintain code.
+    
+    ### **2. JSX (JavaScript XML)**
+    
+    React uses JSX, a syntax extension that allows you to write HTML-like code within JavaScript. JSX makes it more straightforward to define the structure of components and helps create a more readable and concise codebase.
+    
+    ### **3. Virtual DOM**
+    
+    React uses a Virtual DOM to optimize the updating of the actual DOM. Instead of updating the entire DOM tree, React updates a virtual representation of it and then calculates the most efficient way to update the real DOM.
+    
+    ### **4. State and Props**
+    
+    State represents the data that a component manages, while props (short for properties) are data passed from a parent component to a child component. Both play a crucial role in making components dynamic and interactive.
+    
+
+[https://react.dev/](https://react.dev/)
+
+To have successful software, you need to have a great foundation. It needs to be scalable, easy to upgrade and easy to maintain.
+
+The days when every React project had to be pieced together via elaborate Webpack configuration are behind us, and now we can take advantage of frameworks such as [Next.js](https://nextjs.org/)  the idea is : combine the latest web technologies under **one package**. Which is just perfect!
+
+You get :
+
+- new features, bug fixes and security updates with a simple - update of ONE package
+- easy maintenance
+- built and maintained by a huge community and technology leaders ….
+    
+    
+    ### Next.js
+    
+
+# **Benefits of Using Frontend Frameworks**
+
+## **1. Efficiency in Development:**
+
+- Frameworks provide a structured and organized way of building applications, reducing the time and effort required for development.
+- They often come with a set of conventions and best practices, making it easier for developers to collaborate and maintain code.
+
+## **2. Reusability of Components:**
+
+- Components in frameworks are designed to be reusable, promoting a modular approach to development.
+- Developers can create encapsulated components that can be reused across different parts of the application or even in other projects.
+
+## **3. Declarative Syntax:**
+
+- Many frameworks, including React, use a declarative syntax, which makes it easier to understand and reason about the code.
+- Developers describe what they want to achieve, and the framework takes care of the underlying logic.
+
+## **4. Virtual DOM (React):**
+
+- React's virtual DOM allows for efficient updates to the actual DOM, reducing unnecessary re-rendering and improving performance.
+- Changes are batched and optimized, resulting in a smoother user experience.
+
+## **5. Community and Ecosystem:**
+
+- Frameworks often have large and active communities, providing access to a wealth of resources, libraries, and third-party tools.
+- This community support can be invaluable for problem-solving, learning, and staying updated with best practices.
+
+## **6. Performance Optimization:**
+
+- Frameworks are often optimized for performance, implementing features like code splitting, lazy loading, and server-side rendering (as in Next.js).
+- These optimizations contribute to faster page loads, improved SEO, and an overall better user experience.
+
+## **7. Maintainability:**
+
+- The structured nature of frameworks promotes maintainability, making it easier for developers to understand, update, and debug code.
+- Frameworks often enforce coding standards and provide tools for testing and debugging.
+
+# **Benefits of Using Next.js (Built on React)**
+
+## **1. Server-Side Rendering (SSR):**
+
+- Next.js allows for server-side rendering, improving initial page load times and enhancing search engine optimization (SEO).
+- Pages can be pre-rendered on the server, delivering a fully rendered page to the client.
+
+## **2. Automatic Code Splitting:**
+
+- Code splitting is automatic in Next.js, leading to smaller initial bundle sizes and faster page loads.
+- Only the code necessary for the current view is loaded, and additional code is loaded on-demand.
+
+## **3. Simplified Routing:**
+
+- Next.js provides a file-based routing system, simplifying the organization of pages in the project.
+- Dynamic routes and catch-all routes are easily implemented.
+
+## **4. API Routes:**
+
+- Next.js allows the creation of API routes within the same project, simplifying the integration of backend functionality directly within the frontend.
+
+## **5. Static Site Generation (SSG):**
+
+- Next.js supports static site generation, enabling the generation of static HTML at build time.
+- This is particularly useful for content that doesn't change frequently, improving performance and reducing the load on servers.
+
+## **6. Community and Documentation:**
+
+- Next.js benefits from the strong React community and has its own active community.
+- The framework provides comprehensive documentation, making it easier for developers to get started and find solutions to common challenges.
+
+## **7. Easy Deployment:**
+
+- Deploying Next.js applications is straightforward, and the framework supports a variety of deployment options, including serverless deployments and static site hosting.
+
+Using frameworks like React and Next.js offers a multitude of advantages, ranging from improved developer efficiency to enhanced application performance and maintainability. These benefits contribute to a better overall development experience and the delivery of high-quality, scalable applications.
+
+Next.JS is the best choice in most cases. It works best for server-side rendered applications, but can also be used for client-side and statically exported websites. It works equally well with content-driven websites regardless of the amount of content.
+
+Pros
+
+- Created by Vercel
+- Provides outstanding server-side capabilities
+- SEO/SMO friendly
+- Works just as well for applications that don't require SSR
+- Has static export
+- Can combine server-side rendering with static export
+- Good choice when you need to handle secrets (aka API keys that must not be exposed on the client)
+- With server comes huge responsibility: security
+- Uses framework-specific abstractions such as `getServerSideProps`, so when doing a refactor to another framework, it requires extra effort
+
+Rendering on the web is a difficult topic. It wasn’t that long ago that rendering was the responsibility of backend engineers. Today, it’s the job of a fullstack developer.
+
+Luckily, there are many great resources available. Big kudos to Jason Miller and Addy Osmani for putting together an article on Google 
+
+Developers: [https://developers.google.com/web/updates/2019/02/rendering-on-the-web](https://developers.google.com/web/updates/2019/02/rendering-on-the-web)
+
+![Untitled](2aman%20lafr9a%20-%20la3ab%20o%20nta%20marata7%20ee18d6eea95c4dfe8ba216bfbc551b31/Untitled%204.png)
+
+## **NEXT UI**
+
+**Next UI** is a comprehensive UI library tailored for use with Next.js, a popular React framework. Developed with a focus on enhancing the user interface and user experience, Next UI provides a collection of pre-designed, responsive, and customizable components that seamlessly integrate with Next.js projects. Whether you're building a web application, e-commerce site, or a dynamic dashboard, Next UI simplifies the development process by offering a set of well-crafted components and styles that adhere to modern design principles.
+
+- **Component Library:**
+    - Next UI comes equipped with a rich set of components, including navigation bars, modals, buttons, forms, and more. These components are designed to be versatile, enabling developers to easily customize them to match the specific requirements of their projects.
+- **Responsive Design:**
+    - All components within Next UI are built with responsiveness in mind, ensuring a seamless user experience across various devices and screen sizes. The responsive nature of Next UI components facilitates the development of applications that are accessible and user-friendly on desktops, tablets, and mobile devices.
+- **Easy Integration with Next.js:**
+    - Next UI is crafted to seamlessly integrate with Next.js projects, providing a harmonious development experience. The library aligns with Next.js conventions, making it effortless for developers to incorporate these UI components into their applications.
+- **Customization and Theming:**
+    - Next UI emphasizes customization, allowing developers to tailor the appearance of components to match the unique branding and styling preferences of their projects. The library supports theming, enabling the creation of cohesive and visually appealing user interfaces.
+- **Modern Design Aesthetics:**
+    - Next UI follows modern design principles, offering components with clean aesthetics and thoughtful user interactions. The library is continuously updated to stay in sync with the latest design trends, ensuring that your applications maintain a contemporary look and feel.
+
+[https://nextui.org/](https://nextui.org/)
+
+Hierarchy of the Project : 
+
+├── Ta2minUi
+│   ├── app
+│   │   ├── auth             # Files related to user authentication
+│   │   ├── offers           # Files for handling offers within the application
+│   │   ├── players          # Files related to player-related functionalities
+│   │   ├── team             # Files for managing team-related features
+│   │   ├── agency           # Files specific to agency-related functionalities
+│   │   ├── teamManager       # Files for managing team managers
+│   │   ├── page.tsx         # Main page component
+│   │   ├── provider.tsx     # Provider logic for application state management
+│   │   └── layout.tsx       # Layout components for structuring the UI
+│   ├── components
+│   │   ├── charts           # Components related to data visualization using charts
+│   │   ├── darkmoodSwitcher # Components for toggling between dark and light modes
+│   │   ├── home             # Components related to the home page
+│   │   ├── hooks            # Custom React hooks used across the application
+│   │   ├── icons            # Icon components used for various purposes
+│   │   ├── layout           # Layout components for structuring the UI
+│   │   ├── navbar           # Components related to navigation bars
+│   │   ├── offers           # Components related to displaying and managing offers
+│   │   ├── players          # Components related to displaying and managing player information
+│   │   ├── sidebar          # Components for the sidebar navigation
+│   │   ├── table            # Components related to tabular data
+│   │   └── teams            # Components related to managing teams
+│   ├── graphql              # GraphQL-related files and queries
+│   ├── styles               # Stylesheets and styling-related assets
+│   └── ... (other folders from the Next.js project)
+
+Ta2minUi stands as a comprehensive Next.js project, orchestrating the frontend logic of a sophisticated application. The organized hierarchy within the main 'Ta2minUi' folder is designed to provide clarity and efficiency in development:
+
+- **app Directory:**
+    - Within 'app,' each subfolder represents a key application route, including:
+        - 'auth': User authentication logic.
+        - 'offers': Functionality related to managing and displaying offers.
+        - 'players': Components and features for handling player-related information.
+        - 'team': Logic associated with managing teams.
+        - 'agency': Specific functionalities related to agencies.
+        - 'teamManager': Features associated with team managers.
+        - 'page.tsx': The main page component.
+        - 'provider.tsx': Logic for application state management.
+        - 'layout.tsx': Components dedicated to structuring the UI.
+- **components Directory:**
+    - 'components' serves as a repository for reusable UI elements, fostering a modular approach to development:
+        - 'charts': Components related to data visualization using charts.
+        - 'darkmoodSwitcher': Elements facilitating toggling between dark and light modes.
+        - 'home': Components specifically tailored for the home page.
+        - 'hooks': A collection of custom React hooks for application-wide use.
+        - 'icons': Components responsible for rendering various icons.
+        - 'layout': Components for structuring the UI layout.
+        - 'navbar': Components associated with navigation bars.
+        - 'offers': Components specifically designed for displaying and managing offers.
+        - 'players': Components focused on displaying and managing player information.
+        - 'sidebar': Components responsible for rendering the sidebar navigation.
+        - 'table': Components related to displaying tabular data.
+        - 'teams': Components dedicated to managing teams.
+- **graphql Directory:**
+    - The 'graphql' folder manages GraphQL-related files and queries,
+- **styles Directory:**
+    - The 'styles' folder serves as a centralized repository for stylesheets and related assets, contributing to a cohesive and visually appealing user interface.
+    - 
+
+This meticulously structured hierarchy not only ensures a clear organization of the project but also enhances the ease of development, maintenance, and collaboration. Ta2minUi is a testament to the power of Next.js when coupled with a well-structured architecture, fostering a seamless development experience and setting the stage for the creation of powerful and scalable web applications.
+
+**Dark Mode and Light Mode:**
+
+- The 'darkmoodSwitcher' component provides users with the functionality to seamlessly toggle between dark mode and light mode.
+- Dark mode offers a visually comfortable and energy-efficient option for users in low-light environments.
+- Light mode provides a standard, well-lit interface for users who prefer a traditional viewing experience.
+- The integration of these modes reflects Ta2minUi's commitment to providing a personalized and user-friendly interface, enhancing the overall user experience.
+
+**DARK MODE** 
+
+![Untitled](2aman%20lafr9a%20-%20la3ab%20o%20nta%20marata7%20ee18d6eea95c4dfe8ba216bfbc551b31/Untitled%205.png)
+
+**LIGHT MODE**
+
+![Untitled](2aman%20lafr9a%20-%20la3ab%20o%20nta%20marata7%20ee18d6eea95c4dfe8ba216bfbc551b31/Untitled%206.png)
+
+The switcher :
+
+![Untitled](2aman%20lafr9a%20-%20la3ab%20o%20nta%20marata7%20ee18d6eea95c4dfe8ba216bfbc551b31/Untitled%207.png)
+
+![Untitled](2aman%20lafr9a%20-%20la3ab%20o%20nta%20marata7%20ee18d6eea95c4dfe8ba216bfbc551b31/Untitled%208.png)
+
+# **Contributors:**
+
+Sohaib MANAH: [sohaibMan](https://github.com/sohaibMan)
+
+[sohaibMan - Overview](https://github.com/sohaibMan)
+
+[https://www.linkedin.com/in/sohaibmanah/](https://www.linkedin.com/in/sohaibmanah/)
+
+Anas Zenagui : [ZenaguiAnas](https://github.com/ZenaguiAnas)
+
+[ZenaguiAnas - Overview](https://github.com/ZenaguiAnas)
+
+Bakr Asskali:  [AsskaliBakr](https://github.com/ZenaguiAnas)
+
+[BakrAsskali - Overview](https://github.com/BakrAsskali)
+
+[https://www.linkedin.com/in/bakr-asskali-1b2975225/](https://www.linkedin.com/in/bakr-asskali-1b2975225/)
+
+Ismail OUKHA : [itsmeismaill](https://github.com/itsmeismaill)
+
+[itsmeismaill - Overview](https://github.com/itsmeismaill)
+
+[](https://www.linkedin.com/in/ismail-oukha-90a070227/)
+
+**HADDAD MOHAMMED : [HADDADmed](https://github.com/HADDADmed)**
+
+[HADDADmed - Overview](https://github.com/HADDADmed)
+
+[https://www.linkedin.com/in/mohammed-haddad-828507216/](https://www.linkedin.com/in/mohammed-haddad-828507216/)
+
+# **Github Project Repo Link:**
+
+[2aman-lafr9a](https://github.com/2aman-lafr9a)
+
+# O**riented by :**
+
+Dr. *Lotfi* EL *ACHAAK*
+
+[https://www.linkedin.com/in/lotfi-elaachak-a9202324/](https://www.linkedin.com/in/lotfi-elaachak-a9202324/)
+
+[SCRUM](https://www.notion.so/SCRUM-5dad4303e81c4568a750c931f4cc3ff4?pvs=21)
