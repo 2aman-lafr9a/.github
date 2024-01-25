@@ -179,7 +179,7 @@ The deployment has been successfully executed in Azure using a comprehensive sta
 
 In summary, this deployment stack combines containerization, orchestration, automation, and cloud services to create a robust and scalable infrastructure on Azure. Docker and Docker Compose help with packaging and managing containers, Kubernetes orchestrates these containers, Jenkins automates the deployment pipeline, and Azure services provide a cloud-native environment for hosting and managing the application.
 
-# Client Side: ****
+# Client Side:
 
 ## Technologies used
 
