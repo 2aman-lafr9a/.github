@@ -1,6 +1,8 @@
-# 2aman lafr9a -  la3ab o nta marata7
+# 2aman lfer9a -  l3ab o nta merta7
 
-![football-insurance.webp](2aman%20lafr9a%20-%20la3ab%20o%20nta%20marata7%20ee18d6eea95c4dfe8ba216bfbc551b31/football-insurance.webp)
+![football-insurance.webp](2aman%20lfer9a%20-%20l3ab%20o%20nta%20merta7%20ee18d6eea95c4dfe8ba216bfbc551b31/football-insurance.webp)
+
+![2.png](2aman%20lfer9a%20-%20l3ab%20o%20nta%20merta7%20ee18d6eea95c4dfe8ba216bfbc551b31/2.png)
 
 **Problem :**
 
@@ -10,11 +12,27 @@ In the realm of football, numerous players face injuries in every match, instill
 
 An application, powered by machine learning, revolutionizes the sports industry by providing team managers with intelligent recommendations for offers. The incorporation of blockchain technology ensures the security and transparency of contract storage while embracing a 100% digital experience, including cryptocurrency payments, Additionally, the application is built on a micro-services architecture, offering scalability, flexibility, and efficiency by breaking down functionalities into modular and independent services. This innovative approach not only streamlines the negotiation process but also enhances efficiency and security in the management of player contracts.
 
+![6.png](2aman%20lfer9a%20-%20l3ab%20o%20nta%20merta7%20ee18d6eea95c4dfe8ba216bfbc551b31/6.png)
+
+![7.png](2aman%20lfer9a%20-%20l3ab%20o%20nta%20merta7%20ee18d6eea95c4dfe8ba216bfbc551b31/7.png)
+
+![3.png](2aman%20lfer9a%20-%20l3ab%20o%20nta%20merta7%20ee18d6eea95c4dfe8ba216bfbc551b31/3.png)
+
+![4.png](2aman%20lfer9a%20-%20l3ab%20o%20nta%20merta7%20ee18d6eea95c4dfe8ba216bfbc551b31/4.png)
+
+![5.png](2aman%20lfer9a%20-%20l3ab%20o%20nta%20merta7%20ee18d6eea95c4dfe8ba216bfbc551b31/5.png)
+
+![8.png](2aman%20lfer9a%20-%20l3ab%20o%20nta%20merta7%20ee18d6eea95c4dfe8ba216bfbc551b31/8.png)
+
+![9.png](2aman%20lfer9a%20-%20l3ab%20o%20nta%20merta7%20ee18d6eea95c4dfe8ba216bfbc551b31/9.png)
+
+![10.png](2aman%20lfer9a%20-%20l3ab%20o%20nta%20merta7%20ee18d6eea95c4dfe8ba216bfbc551b31/10.png)
+
 **Our application’s architecture:**
 
 As stated before we chose to use a micro-services architecture using an API gateway written in Spring Boot as the medium for communication, in addition to allowing our micro-services to communicate we decided to utilize the GRPC framework due to its fast response times and broad language support.
 
-![Untitled](2aman%20lafr9a%20-%20la3ab%20o%20nta%20marata7%20ee18d6eea95c4dfe8ba216bfbc551b31/Untitled.png)
+![Untitled](2aman%20lfer9a%20-%20l3ab%20o%20nta%20merta7%20ee18d6eea95c4dfe8ba216bfbc551b31/Untitled.png)
 
 As you can see above Client can only communicate with the API gateway, which in turn will check the credentials of the client with the authentication micro-service, and only then will the gateway allow it to access the other components of the application.
 
@@ -28,7 +46,7 @@ The project uses GraphQL for defining the types and queries for the various enti
 
 1. **Auth service:**
     
-    ![Gateway.jpg](2aman%20lafr9a%20-%20la3ab%20o%20nta%20marata7%20ee18d6eea95c4dfe8ba216bfbc551b31/Gateway.jpg)
+    ![Gateway.jpg](2aman%20lfer9a%20-%20l3ab%20o%20nta%20merta7%20ee18d6eea95c4dfe8ba216bfbc551b31/Gateway.jpg)
     
 
 This microserver is responsible for JWT authentication, and role-based authorization, it is written with a low level language and a fast language **RUST** (Rust is a multi-paradigm, general-purpose programming language that emphasizes performance, type safety, and concurrency. It enforces memory safety, meaning that all references point to valid memory, without requiring the use of automated memory management techniques, such as garbage collector) 
@@ -71,6 +89,10 @@ It uses a PostgreSQL database ( Relational database ) as  a primary database to 
   rpc DeleteOffer(DeleteOfferRequest) returns (DeleteOfferResponse);
 ```
 
+You can find the code for this part at:
+
+[GitHub - 2aman-lafr9a/Agency-management: This microservice is responsible for all agency and offer based methods, it uses GOLANG and a PostgresQL database](https://github.com/2aman-lafr9a/Agency-management)
+
 1. **Teams and player management:**
 
 These 2 services were written in RUBY and used a mysql database, the Teams micro-service is responsible for managing Teams. It provides functionalities such as creating, updating, retrieving, and deleting Teams.
@@ -102,7 +124,13 @@ It uses a Mysql database ( Relational database ) as  a primary database to store
     rpc GetTeams(GetTeamsRequest) returns (GetTeamsResponse) {}
 ```
 
-# Recommendation System
+You can find the code for this part at:
+
+[GitHub - 2aman-lafr9a/Team-management: This microservice is responsible for all Team/ players/ Team manager based methods, it uses Ruby and a mysql database](https://github.com/2aman-lafr9a/Team-management)
+
+# **The recommendation system**
+
+# Project Introduction
 
 In the dynamic world of sports, where team managers are tasked with building and enhancing their teams, our Recommendation System comes to the forefront as a powerful tool designed to assist team managers in making informed decisions. Whether you are a seasoned team manager or just starting out, our platform aims to streamline the player selection process by incorporating intelligent recommendations for insurance offers tailored to the preferences and historical choices of each team's unique player.
 
@@ -137,7 +165,7 @@ Imagine a team manager adding a new player to their roster. When it comes time t
 
 ## Backend Development
 
-### 1. Python Programming Language and Jupyter Notebook
+### 1. Python Programming Language and Jupyter Nootebook
 
 - **Use Cases:**
     - Backend logic implementation.
@@ -156,14 +184,14 @@ Imagine a team manager adding a new player to their roster. When it comes time t
 
 ### 4. Apache Kafka
 
-![Untitled](https://github.com/2aman-lafr9a/RecommendationSystem/assets/90706276/21df5958-b8a5-4a19-9ca3-8f561e0262e6)
+![Untitled](2aman%20lfer9a%20-%20l3ab%20o%20nta%20merta7%20ee18d6eea95c4dfe8ba216bfbc551b31/Untitled%201.png)
 
 - **Use Case:**
     - Kafka facilitates real-time event streaming, essential for dynamic updates in the recommendation system.
 
 ### 5. Apache Zookeeper
 
-![Untitled(1)](https://github.com/2aman-lafr9a/RecommendationSystem/assets/90706276/dc3cae98-bea5-4477-8b5d-04c92750a66b)
+![Untitled](2aman%20lfer9a%20-%20l3ab%20o%20nta%20merta7%20ee18d6eea95c4dfe8ba216bfbc551b31/Untitled%202.png)
 
 - **Use Case:**
     - Zookeeper ensures distributed coordination and synchronization.
@@ -172,14 +200,14 @@ Imagine a team manager adding a new player to their roster. When it comes time t
 
 ### 1. Docker
 
-![Untitled(2)](https://github.com/2aman-lafr9a/RecommendationSystem/assets/90706276/c544d466-2f20-4b2d-95c9-46d5e6535c5d)
+![Untitled](2aman%20lfer9a%20-%20l3ab%20o%20nta%20merta7%20ee18d6eea95c4dfe8ba216bfbc551b31/Untitled%203.png)
 
 - **Use Case:**
     - Containerization for consistent deployment across environments.
 
 ### 2. Apache Airflow
 
-![Untitled(3)](https://github.com/2aman-lafr9a/RecommendationSystem/assets/90706276/df79daf4-f709-4105-9207-4eed52fbad9e)
+![Untitled](2aman%20lfer9a%20-%20l3ab%20o%20nta%20merta7%20ee18d6eea95c4dfe8ba216bfbc551b31/Untitled%204.png)
 
 - **Use Cases:**
     - Orchestrating and scheduling workflows.
@@ -187,14 +215,14 @@ Imagine a team manager adding a new player to their roster. When it comes time t
 
 ### 3. Data Version Control (DVC)
 
-![file-type-dvc-icon-512x293-js3het8o](https://github.com/2aman-lafr9a/RecommendationSystem/assets/90706276/6163b22e-1155-4e82-a2fd-d4ad3d517486)
+![Untitled](2aman%20lfer9a%20-%20l3ab%20o%20nta%20merta7%20ee18d6eea95c4dfe8ba216bfbc551b31/Untitled.svg)
 
 - **Use Case:**
     - Efficient versioning of datasets for reproducibility and traceability.
 
 ### 4. CI/CD using GitHub Actions (CML - Continuous Machine Learning)
 
-![Untitled(4)](https://github.com/2aman-lafr9a/RecommendationSystem/assets/90706276/3a9b7b6a-43de-4b09-99bc-28bbdd3d70b4)
+![Untitled](2aman%20lfer9a%20-%20l3ab%20o%20nta%20merta7%20ee18d6eea95c4dfe8ba216bfbc551b31/Untitled%205.png)
 
 - **Use Cases:**
     - Continuous integration for automated testing.
@@ -204,7 +232,7 @@ Imagine a team manager adding a new player to their roster. When it comes time t
 
 ### 1. Cassandra Database
 
-![Untitled(5)](https://github.com/2aman-lafr9a/RecommendationSystem/assets/90706276/ca17e3e7-8238-412a-8158-8b2d04570e5b)
+![Untitled](2aman%20lfer9a%20-%20l3ab%20o%20nta%20merta7%20ee18d6eea95c4dfe8ba216bfbc551b31/Untitled%206.png)
 
 - **Use Cases:**
     - Scalable storage and retrieval of player data.
@@ -215,10 +243,9 @@ Imagine a team manager adding a new player to their roster. When it comes time t
 - **Use Cases:**
     - Management of rating data and insurances data.
     - Relational database capabilities.
+    
 
 # Getting Started
-
-...
 
 # Recommendation System Overview
 
@@ -231,56 +258,29 @@ A **Recommendation System** is a software application designed to provide person
 1. **User-User Collaborative Filtering:** Recommends items to a user based on the preferences of other users with similar tastes.
 2. **Item-Item Collaborative Filtering:** Recommends items that are similar to those the user has liked or interacted with.
 
-![Untitled-2024-01-18-1833](https://github.com/2aman-lafr9a/RecommendationSystem/assets/90706276/6664becc-0c94-48a4-9ed8-fb900d8ec125)
+![Untitled](2aman%20lfer9a%20-%20l3ab%20o%20nta%20merta7%20ee18d6eea95c4dfe8ba216bfbc551b31/Untitled%207.png)
 
 ## User-Item Collaborative Filtering
 
 **User-Item Collaborative Filtering** is a type of Collaborative Filtering where recommendations are made by identifying users who are similar to the target user and suggesting items that those similar users have liked or interacted with.
 
-![RecSys1](https://github.com/2aman-lafr9a/RecommendationSystem/assets/90706276/fe058e49-e070-4969-af4b-b911b6864540)
+![Untitled](2aman%20lfer9a%20-%20l3ab%20o%20nta%20merta7%20ee18d6eea95c4dfe8ba216bfbc551b31/Untitled%208.png)
 
 # Architecture
 
 ## 1. **Pre-processing**
 
-![RecSys3](https://github.com/2aman-lafr9a/RecommendationSystem/assets/90706276/8d4b0338-1c5d-42ff-be43-4ac436000e44)
+![Untitled](2aman%20lfer9a%20-%20l3ab%20o%20nta%20merta7%20ee18d6eea95c4dfe8ba216bfbc551b31/Untitled%209.png)
 
 ## 2. Model Training
 
-![RecSys4](https://github.com/2aman-lafr9a/RecommendationSystem/assets/90706276/5b480d9c-8cef-4fd9-af90-bce07555fb48)
+![Untitled](2aman%20lfer9a%20-%20l3ab%20o%20nta%20merta7%20ee18d6eea95c4dfe8ba216bfbc551b31/Untitled%2010.png)
 
 ## 3. User-Based Collaborative Filtering
 
-![RecSys5](https://github.com/2aman-lafr9a/RecommendationSystem/assets/90706276/6891d9c3-e383-4e92-848b-fe5e887da321)
+![Untitled](2aman%20lfer9a%20-%20l3ab%20o%20nta%20merta7%20ee18d6eea95c4dfe8ba216bfbc551b31/Untitled%2011.png)
 
-![RecSys6](https://github.com/2aman-lafr9a/RecommendationSystem/assets/90706276/4c2443d2-382f-47c5-a2db-beaf0ac0f236)
-
-    
-    The a**rchitecture of the blockchain:**
-    
-    ![1_3VnQFDfautjlj690oaf5hg.webp](2aman%20lafr9a%20-%20la3ab%20o%20nta%20marata7%20ee18d6eea95c4dfe8ba216bfbc551b31/1_3VnQFDfautjlj690oaf5hg.webp)
-    
-    This architecture illustrates the interaction between various components involved in a decentralized application (DApp) built on the Ethereum blockchain, specifically a DApp that utilizes smart contracts. The components are as follows:
-    
-    1. **Internet**: The global network that enables data communication between devices.
-    2. **Web Server**: A server that hosts the web application, serving static files like HTML, CSS, and JavaScript to users' browsers.
-    3. **Browser**: A software application used to access and display web content, such as a DApp's user interface.
-    4. **Block**: A fundamental unit of data storage in blockchain technology, containing a collection of transactions.
-    5. **Front-end**: The user interface of a DApp, built using technologies like JavaScript, HTML, and CSS.
-    6. **Smart Contracts**: Self-executing digital agreements deployed on the Ethereum blockchain, governing the logic and functionality of a DApp.
-    7. **Ethereum Virtual Machine (EVM)**: A virtual machine that executes smart contracts on the Ethereum blockchain, ensuring consistent and predictable behavior across all nodes.
-    8. **Ethereum Blockchain**: The decentralized, distributed ledger that stores and maintains the state of smart contracts and transactions on the Ethereum network.
-    
-    The architecture can be described as follows:
-    
-    1. The Internet enables communication between the web server and the user's browser.
-    2. The web server hosts the front-end components (HTML, CSS, JavaScript) of the DApp, serving them to the user's browser upon request.
-    3. The user's browser receives and displays the front-end components, allowing the user to interact with the DApp.
-    4. When the user interacts with the DApp, the browser sends transactions to the Ethereum blockchain.
-    5. The transactions are grouped into blocks and added to the Ethereum blockchain by the network's nodes.
-    6. The smart contracts, deployed on the Ethereum blockchain, execute the logic and functionality of the DApp.
-    7. The Ethereum Virtual Machine ensures consistent execution of smart contracts across all nodes in the Ethereum network.
-    8. The Ethereum blockchain maintains the state of smart contracts and transactions, providing a tamper-proof, decentralized record of all interactions.
+![Untitled](2aman%20lfer9a%20-%20l3ab%20o%20nta%20merta7%20ee18d6eea95c4dfe8ba216bfbc551b31/Untitled%2012.png)
 
 **Deployment :**
 
@@ -301,13 +301,57 @@ The deployment has been successfully executed in Azure using a comprehensive sta
 
 In summary, this deployment stack combines containerization, orchestration, automation, and cloud services to create a robust and scalable infrastructure on Azure. Docker and Docker Compose help with packaging and managing containers, Kubernetes orchestrates these containers, Jenkins automates the deployment pipeline, and Azure services provide a cloud-native environment for hosting and managing the application.
 
-# Client Side:
+### **Blockchain architecture:**
+
+![1_3VnQFDfautjlj690oaf5hg.webp](2aman%20lfer9a%20-%20l3ab%20o%20nta%20merta7%20ee18d6eea95c4dfe8ba216bfbc551b31/1_3VnQFDfautjlj690oaf5hg.webp)
+
+1. **Internet**: The global network that enables data communication between devices.
+2. **Web Server**: A server that hosts the web application, serving static files like HTML, CSS, and JavaScript to users' browsers.
+3. **Browser**: A software application used to access and display web content, such as a DApp's user interface.
+4. **Block**: A fundamental unit of data storage in blockchain technology, containing a collection of transactions.
+5. **Front-end**: The user interface of a DApp, built using technologies like JavaScript, HTML, and CSS.
+6. **Smart Contracts**: Self-executing digital agreements deployed on the Ethereum blockchain, governing the logic and functionality of a DApp.
+7. **Ethereum Virtual Machine (EVM)**: A virtual machine that executes smart contracts on the Ethereum blockchain, ensuring consistent and predictable behavior across all nodes.
+8. **Ethereum Blockchain**: The decentralized, distributed ledger that stores and maintains the state of smart contracts and transactions on the Ethereum network.
+
+The architecture can be described as follows:
+
+1. The Internet enables communication between the web server and the user's browser.
+2. The web server hosts the front-end components (HTML, CSS, JavaScript) of the DApp, serving them to the user's browser upon request.
+3. The user's browser receives and displays the front-end components, allowing the user to interact with the DApp.
+4. When the user interacts with the DApp, the browser sends transactions to the Ethereum blockchain.
+5. The transactions are grouped into blocks and added to the Ethereum blockchain by the network's nodes.
+6. The smart contracts, deployed on the Ethereum blockchain, execute the logic and functionality of the DApp.
+7. The Ethereum Virtual Machine ensures consistent execution of smart contracts across all nodes in the Ethereum network.
+8. The Ethereum blockchain maintains the state of smart contracts and transactions, providing a tamper-proof, decentralized record of all interactions.
+
+In my project, I am utilizing three smart contracts to streamline various processes and ensure trust, efficiency, and security. The first smart contract governs acceptance rights between the team manager and AMAN, while the second smart contract handles acceptance rights between the agency and AMAN. These two smart contracts facilitate seamless agreement on terms and conditions, ensuring that all parties are aware of their obligations and the standards for contract execution. The third smart contract is designed for payment purposes between the team manager and agency. By automating the payment process, this smart contract reduces the need for intermediaries, minimizing costs, and increasing transparency. Together, these smart contracts enhance the reliability and security of the underlying blockchain technology, making it an ideal choice for managing agreements and payments within the project.
+
+### Tools :
+
+![Untitled](2aman%20lfer9a%20-%20l3ab%20o%20nta%20merta7%20ee18d6eea95c4dfe8ba216bfbc551b31/Untitled%2013.png)
+
+Hardhat is a popular development tool and task runner specifically designed for Ethereum development. It helps developers with tasks such as compiling smart contracts, running tests, and deploying contracts to the Ethereum network. It provides a development environment that streamlines the process of creating and testing Ethereum-based applications.
+
+![Untitled](2aman%20lfer9a%20-%20l3ab%20o%20nta%20merta7%20ee18d6eea95c4dfe8ba216bfbc551b31/Untitled%2014.png)
+
+Sepolia is a public test network for Ethereum, allowing developers to test their smart contracts and dApps without using real Ether or incurring actual transaction costs. It is a decentralized, distributed ledger that maintains the state of smart contracts and transactions on the Ethereum network, ensuring a tamper-proof, decentralized record of all interactions. Sepolia uses a proof-of-stake consensus mechanism, which is the same as the Ethereum mainnet post-Merge. This testnet is recommended by Ethereum core developers for smart contract application development.
+
+![Untitled](2aman%20lfer9a%20-%20l3ab%20o%20nta%20merta7%20ee18d6eea95c4dfe8ba216bfbc551b31/Untitled%2015.png)
+
+Solidity is a programming language designed for developing smart contracts that run on the Ethereum blockchain. Smart contracts are self-executing contracts with the terms of the agreement directly written into code. Ethereum, being a decentralized platform for building decentralized applications (DApps), relies on smart contracts to define and automate the rules and logic of these applications.
+
+![Untitled](2aman%20lfer9a%20-%20l3ab%20o%20nta%20merta7%20ee18d6eea95c4dfe8ba216bfbc551b31/Untitled%2016.png)
+
+MetaMask is a popular cryptocurrency wallet and browser extension that allows users to interact with decentralized applications (DApps) on the Ethereum blockchain. It provides a user-friendly interface for managing Ethereum-based assets and enables users to securely store and manage their private keys.
+
+# Client Side: ****
 
 ## Technologies used
 
 - **React**
     
-    ![Untitled](2aman%20lafr9a%20-%20la3ab%20o%20nta%20marata7%20ee18d6eea95c4dfe8ba216bfbc551b31/Untitled%203.png)
+    ![Untitled](2aman%20lfer9a%20-%20l3ab%20o%20nta%20merta7%20ee18d6eea95c4dfe8ba216bfbc551b31/Untitled%2017.png)
     
      
     
@@ -446,7 +490,7 @@ Luckily, there are many great resources available. Big kudos to Jason Miller and
 
 Developers: [https://developers.google.com/web/updates/2019/02/rendering-on-the-web](https://developers.google.com/web/updates/2019/02/rendering-on-the-web)
 
-![Untitled](2aman%20lafr9a%20-%20la3ab%20o%20nta%20marata7%20ee18d6eea95c4dfe8ba216bfbc551b31/Untitled%204.png)
+![Untitled](2aman%20lfer9a%20-%20l3ab%20o%20nta%20merta7%20ee18d6eea95c4dfe8ba216bfbc551b31/Untitled%2018.png)
 
 ## **NEXT UI**
 
@@ -467,7 +511,7 @@ Developers: [https://developers.google.com/web/updates/2019/02/rendering-on-the
 
 Hierarchy of the Project : 
 
-![Untitled](2aman%20lafr9a%20-%20la3ab%20o%20nta%20marata7%20ee18d6eea95c4dfe8ba216bfbc551b31/Untitled%205.png)
+![Untitled](2aman%20lfer9a%20-%20l3ab%20o%20nta%20merta7%20ee18d6eea95c4dfe8ba216bfbc551b31/Untitled%2019.png)
 
 Ta2minUi stands as a comprehensive Next.js project, orchestrating the frontend logic of a sophisticated application. The organized hierarchy within the main 'Ta2minUi' folder is designed to provide clarity and efficiency in development:
 
@@ -513,17 +557,17 @@ This meticulously structured hierarchy not only ensures a clear organization of 
 
 **DARK MODE** 
 
-![Untitled](2aman%20lafr9a%20-%20la3ab%20o%20nta%20marata7%20ee18d6eea95c4dfe8ba216bfbc551b31/Untitled%206.png)
+![Untitled](2aman%20lfer9a%20-%20l3ab%20o%20nta%20merta7%20ee18d6eea95c4dfe8ba216bfbc551b31/Untitled%2020.png)
 
 **LIGHT MODE**
 
-![Untitled](2aman%20lafr9a%20-%20la3ab%20o%20nta%20marata7%20ee18d6eea95c4dfe8ba216bfbc551b31/Untitled%207.png)
+![Untitled](2aman%20lfer9a%20-%20l3ab%20o%20nta%20merta7%20ee18d6eea95c4dfe8ba216bfbc551b31/Untitled%2021.png)
 
 The switcher :
 
-![Untitled](2aman%20lafr9a%20-%20la3ab%20o%20nta%20marata7%20ee18d6eea95c4dfe8ba216bfbc551b31/Untitled%208.png)
+![Untitled](2aman%20lfer9a%20-%20l3ab%20o%20nta%20merta7%20ee18d6eea95c4dfe8ba216bfbc551b31/Untitled%2022.png)
 
-![Untitled](2aman%20lafr9a%20-%20la3ab%20o%20nta%20marata7%20ee18d6eea95c4dfe8ba216bfbc551b31/Untitled%209.png)
+![Untitled](2aman%20lfer9a%20-%20l3ab%20o%20nta%20merta7%20ee18d6eea95c4dfe8ba216bfbc551b31/Untitled%2023.png)
 
 # **Contributors:**
 
@@ -537,6 +581,8 @@ Anas Zenagui : [ZenaguiAnas](https://github.com/ZenaguiAnas)
 
 [ZenaguiAnas - Overview](https://github.com/ZenaguiAnas)
 
+[https://www.linkedin.com/in/anas-zenagui/](https://www.linkedin.com/in/anas-zenagui/)
+
 Bakr Asskali:  [AsskaliBakr](https://github.com/ZenaguiAnas)
 
 [BakrAsskali - Overview](https://github.com/BakrAsskali)
@@ -547,7 +593,7 @@ Ismail OUKHA : [itsmeismaill](https://github.com/itsmeismaill)
 
 [itsmeismaill - Overview](https://github.com/itsmeismaill)
 
-[](https://www.linkedin.com/in/ismail-oukha-90a070227/)
+[https://www.linkedin.com/in/ismail-oukha-90a070227/](https://www.linkedin.com/in/ismail-oukha-90a070227/)
 
 **HADDAD MOHAMMED : [HADDADmed](https://github.com/HADDADmed)**
 
@@ -565,4 +611,4 @@ Dr. *Lotfi* EL *ACHAAK*
 
 [https://www.linkedin.com/in/lotfi-elaachak-a9202324/](https://www.linkedin.com/in/lotfi-elaachak-a9202324/)
 
-[SCRUM](https://www.notion.so/SCRUM-5dad4303e81c4568a750c931f4cc3ff4?pvs=21)
+[     **2aman lfer9a - l3eb onta merta7** ](https://www.notion.so/2aman-lfer9a-l3eb-onta-merta7-5dad4303e81c4568a750c931f4cc3ff4?pvs=21)
